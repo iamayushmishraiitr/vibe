@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int            @id @default(autoincrement())
+  username         String         @unique
+  email            String
+  password         String
+  bio              String         @default("Add Bio Here")
+  userimage        String         @default("")
+  liked            String[]
+  saved            String[]
+  request          String[]
+  requestrecieve   String[]
+  followers        String[]
+  following        String[]
+  post             String[]
+  sentMessages     message[]      @relation("sentMessages")
+  receivedMessages message[]      @relation("receivedMessages")
+  groups           group[]        @relation("userGroups")
+  conversation     conversation[] @relation("conversation")
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String
+  userId    Int
+  username  String
+  userimage String
+  useremail String
+  tags      String
+  location  String
+  caption   String
+  liked     String[]
+  saved     String[]
+}
+
+model message {
+  id             String        @id @default(uuid())
+  receiverId     Int?
+  senderId       Int
+  groupId        String?
+  content        String
+  type           String
+  sender         User          @relation("sentMessages", fields: [senderId], references: [id])
+  receiver       User?         @relation("receivedMessages", fields: [receiverId], references: [id])
+  group          group?        @relation("groupMessage", fields: [groupId], references: [id])
+  conversation   conversation? @relation("messageConversation", fields: [conversationId], references: [id])
+  conversationId String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  read           Boolean
+}
+
+model group {
+  id        String    @id @default(uuid())
+  name      String
+  messages  message[] @relation("groupMessage")
+  users     User[]    @relation("userGroups")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model conversation {
+  id        String    @id @default(uuid())
+  users     User[]    @relation("conversation")
+  messages  message[] @relation("messageConversation")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+} 
