@@ -71,12 +71,12 @@ const Message = ({ message }: { message: message }) => {
             ) : receiverData?.userimage === "" ? (
               <img
                 src="../../assets/fileupload.svg"
-                className="rounded-full h-full w-full"
+                className="rounded-full h-[50px] w-[50px]"
               />
             ) : (
               <img
                 src={receiverData?.userimage}
-                className="rounded-full h-full w-full"
+                className="rounded-full h-[50px] w-[50px]"
               />
             )}
           </div>

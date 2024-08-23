@@ -10,7 +10,6 @@ import SendIcon from "@mui/icons-material/Send";
 const userImage = () => {
   const [flag, setFlag] = useState(true);
   const handleClose = () => setFlag(false);
-  const handleDataFromChild = () => setFlag(false);
   const dispatch = useDispatch();
   const { id } = useParams();
   const sId = localStorage.getItem("userId");
@@ -35,6 +34,7 @@ const userImage = () => {
         sId,
         type: "image",
       });
+      handleClose()
     } catch (error) {
       toast.error("Error occurred");
       console.error("Failed to send message:", error);
@@ -47,7 +47,7 @@ const userImage = () => {
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
     >
-      <div className="flex  justify-between gap-2 h-[280px] w-[400px] absolute left-1/3 top-2/3 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-gray-800 rounded-lg">
+      <div className="flex  justify-between gap-2 h-[280px] w-[400px] absolute left-1/3 top-2/3 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-gray-700 rounded-lg">
       <DropBox onImageUpload={handleImageUrl} /> 
       <button
         type="submit"

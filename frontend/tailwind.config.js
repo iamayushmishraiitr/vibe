@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'custom-pattern': "url('https://firebasestorage.googleapis.com/v0/b/socialmedia-5a9a9.appspot.com/o/post%2FSBXHrETHQaqNhTCh7KG_K?alt=media&token=c5665bbe-0649-43fe-8e01-c5ce0146d48a')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

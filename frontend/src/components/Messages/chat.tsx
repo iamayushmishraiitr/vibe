@@ -21,11 +21,10 @@ const Chat = () => {
     <div className="overflow-auto x scrollbar-hide">
       {newarr &&
         newarr.map((it: message, index: number) => {
-          const isLastMessage = index === newarr.length - 1;
           return (
             <div
               key={index}
-              ref={isLastMessage ? lastMessageRef : null} 
+              ref={lastMessageRef} 
             >
               <Message message={it} />
             </div>

@@ -35,7 +35,7 @@ export default function dropBox(props:any) {
   });
 
   return (
-    <div {...getRootProps()}>
+    <div {...getRootProps()} className="w-[100%]">
       <input {...getInputProps()} />
       {img !== null ? (
         <div>
@@ -46,9 +46,7 @@ export default function dropBox(props:any) {
           )}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center h-full w-full">
-          <img src="../../assets/fileupload.svg" alt="Place the image here" />
-          <h3 className="text-white mt-4">Drag or Select The Photo Here</h3>
+        <div className="flex flex-col items-center justify-center h-full w-full bg-cover bg-center bg-custom-pattern">
         </div>
       )}
     </div>
