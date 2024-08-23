@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { setUsers } from "@/components/Redux/slice/messageUsers";
+import TopCreators from "@/components/TopCreators";
 
 const Message = () => {
   const [followers, setFollowers] = useState<string[]>([]);
@@ -50,9 +51,9 @@ const Message = () => {
   dispatch(setUsers(arr)) ;
   return (
     <div className="flex h-[100vh] w-[100%] text-white  ">
-      <div className="bg-slate-900 pl-[10px]  h-[100%] w-[100%] overflow-auto hide-scrollbar">
+      <div className="bg-slate-900 pl-[10px]  h-[100%] w-[65%] overflow-auto hide-scrollbar">
         {arr?.map((user, index) => (
-          <div key={index} className="flex flex-row text-2xl text-white cursor-pointer mb-[14px] " onClick={()=>navigate(`${user.id}`)}>
+          <div key={index} className="flex flex-row text-2xl text-white cursor-pointer mb-[14px] mt-2 mr-2 border-b-2 " onClick={()=>navigate(`${user.id}`)}>
             <img
               src={
                 user.userimage === ""
@@ -65,6 +66,9 @@ const Message = () => {
             <h1 className="text-purple-600 font-bold text-2xl ml-[20px] mt-[20px]" >{user.username}</h1>
           </div>
         ))}
+      </div>
+      <div className="h-full w-[35%] bg-black">
+      <TopCreators/>
       </div>
     </div>
   );

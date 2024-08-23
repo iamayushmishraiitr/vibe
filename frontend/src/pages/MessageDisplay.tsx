@@ -9,10 +9,10 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import { useEffect, useState } from "react";
 import { request } from "@/reqHandler";
-import {setMessages} from "../components/Redux/slice/messages";
-
+import { setMessages } from "../components/Redux/slice/messages";
+import UserImage from "@/components/Modals/userImage";
 const MessageDisplay = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const arr = useSelector(getMessageUsers);
   const [state, setState] = useState(true);
   const sId = localStorage.getItem("userId");
@@ -32,13 +32,14 @@ const MessageDisplay = () => {
         console.error("Error fetching messages:", error);
       }
     };
-  
+
     fetchMessages();
-  
-    return () => {dispatch(setMessages([]))};
+
+    return () => {
+      dispatch(setMessages([]));
+    };
   }, [id]);
-  
-  
+
   return (
     <div className="bg-slate-900 h-[100vh] w-[100%] text-white">
       <div className="flex flex-col bg-slate-900 h-[91%] w-[100%] overflow-auto hide-scrollbar">
@@ -94,6 +95,7 @@ const MessageDisplay = () => {
         </div>
         <Input />
       </div>
+      {!state && <UserImage />}
     </div>
   );
 };

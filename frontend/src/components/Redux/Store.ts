@@ -5,6 +5,7 @@ import { UserState } from './slice/messageUsers'
 import { MessageState } from './slice/messages';
 import  socketReducer from "./slice/socketSlice" 
 import messages from './slice/messages';
+import curUsers from './slice/curUsers';
 export interface RootState {
   users: UserState ;
   messages:MessageState
@@ -13,7 +14,8 @@ const store = configureStore({
   reducer: {
     users: userReducer,
     socket:socketReducer ,
-    messages:messages 
+    messages:messages ,
+    curUser:curUsers
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

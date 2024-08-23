@@ -6,12 +6,22 @@ import { useNavigate } from "react-router";
 import EditIcon from "@mui/icons-material/Edit";
 import Followers from "@/components/Modals/Follower";
 import Followings from "@/components/Modals/Following";
+import { useDispatch } from "react-redux";
+import { setCurUser } from "@/components/Redux/slice/curUsers";
 
 const Profile = () => {
   const [data, setData] = useState<any>([]);  
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const val = data.val;
+  const arr = data.arr3;
+  const dispatch= useDispatch() ;
+  let obj ;
+  if(val) 
+    {
+       obj= {img:val.userimage , name:val.username} ;
+        dispatch(setCurUser(obj)) ;
+    }
   useEffect(() => {
     request
       .get("profile", {
@@ -28,10 +38,6 @@ const Profile = () => {
     navigate("/EditProfile");
   };
  
-  const val = data.val;
-  const arr = data.arr3;
-  console.log("Assaasdsacsa a", val);
-
   return (
     <div className="bg-black text-white h-[100vh] w-[100vw] items-center justify-center">
       <div className="flex justify-between w-[100%] h-[20%] mt-[2%]">

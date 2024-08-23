@@ -27,6 +27,7 @@ router.get("/", async (req: Request, res: Response) => {
           content: true,
           type: true,
           createdAt: true,
+          receiverId:true
         },
       },
     },

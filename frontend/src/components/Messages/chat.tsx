@@ -1,22 +1,38 @@
-import { useSelector } from "react-redux"
-import { getMessages } from "../Redux/slice/messages"
-import {message} from "@/interface"
-const chat = () => {
-  const data= useSelector(getMessages) ;
-  console.log("data2     ",data)
-   const newarr = data.map((it:any)=>JSON.parse(it))  ;
-  return (
-    <div>
-    {newarr && newarr.map((it: message ,index) => 
-    (
-      <div key={index}> 
-        <h1>{it.content}</h1>
-        <h1>{it.senderId}</h1>
-      </div>
-    ))}
-  </div>
-  
-  )
-}
+import { useSelector } from "react-redux";
+import { getMessages } from "../Redux/slice/messages";
+import { message } from "@/interface";
+import Message from "./Message";
+import { useEffect, useRef } from "react";
 
-export default chat
+const Chat = () => {
+  const data = useSelector(getMessages);
+  const lastMessageRef = useRef<HTMLDivElement | null>(null);
+
+
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [data]);
+
+  const newarr = data.map((it: any) => JSON.parse(it));
+
+  return (
+    <div className="overflow-auto x scrollbar-hide">
+      {newarr &&
+        newarr.map((it: message, index: number) => {
+          const isLastMessage = index === newarr.length - 1;
+          return (
+            <div
+              key={index}
+              ref={isLastMessage ? lastMessageRef : null} 
+            >
+              <Message message={it} />
+            </div>
+          );
+        })}
+    </div>
+  );
+};
+
+export default Chat;

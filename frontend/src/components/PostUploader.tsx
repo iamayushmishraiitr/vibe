@@ -4,7 +4,7 @@ import {ref, getDownloadURL, uploadBytes,} from "firebase/storage";
 import { imageDb } from "../pages/firebase";
 import { nanoid } from "nanoid";
 type ProfileUploaderProps = {
-  fieldChange: (files: File[]) => void;
+  fieldChange: any ,
   imgaeToparent: (string: string[]) => void;
   imageurl: string | null;
 };

@@ -12,7 +12,6 @@ const Follower: React.FC = () => {
   const [val2, setVal2] = useState<string[]>([]);
 
   useEffect(() => {
-    // Fetch followers on component mount
     request
       .get("getFollowers", {
         params: { id: localStorage.getItem("userId") },
@@ -27,7 +26,6 @@ const Follower: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Update val whenever val2 changes
     setVal(val2.map((it: string) => JSON.parse(it)));
   }, [val2]);
 

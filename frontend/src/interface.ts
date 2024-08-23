@@ -17,5 +17,6 @@
      senderId:string ,
      createdAt:string,
      content:string ,
-     type:string
+     type:string,
+     receiverId:string ,
   }

@@ -64,7 +64,7 @@ router.post("/", async (req: Request, res: Response) => {
     await prisma.message.create({
       data: {
         content: content,
-        type: "text",
+        type,
         read: false,
         conversation: {
           connect: { id: conversation.id },
