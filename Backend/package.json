@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon  src/index.ts",
     "start": "node output/index.js" ,
-    "build" : "npx tsc -b",
+    "build" : "prisma generate && npx tsc -b",
     "postinstall": "prisma generate"
   },
   "keywords": [],
