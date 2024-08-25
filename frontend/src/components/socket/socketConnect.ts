@@ -3,7 +3,7 @@ import { useDispatch} from 'react-redux';
 import io, { Socket } from 'socket.io-client';
 import { setSocket } from '../Redux/slice/socketSlice'
 import { addMessages  } from '../Redux/slice/messages';
-
+import { baseUrl } from '@/reqHandler';
 
 const socketConnect = () => {
    const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const socketConnect = () => {
    useEffect(() => {
       let socket: Socket | undefined;
       if (userId) {
-         socket = io("https://vibe-azure.vercel.app", {
+         socket = io(baseUrl, {
             query: {
                userId: userId,
             },
