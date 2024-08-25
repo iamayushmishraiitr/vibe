@@ -1,5 +1,5 @@
 import axios from "axios"
-const baseUrl = "http://ec2-65-0-93-152.ap-south-1.compute.amazonaws.com:3000";
+const baseUrl = "https://vibe-azure.vercel.app";
 
 const request= axios.create({
     baseURL:baseUrl ,
