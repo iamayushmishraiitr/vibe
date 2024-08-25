@@ -16,6 +16,7 @@ const socketConnect = () => {
             query: {
                userId: userId,
             },
+            withCredentials: true,
             reconnectionDelayMax: 5000,
          });
          socket.on("getOnline",(data :any)=>[
