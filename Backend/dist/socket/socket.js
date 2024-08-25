@@ -30,7 +30,7 @@ exports.server = server;
 // Configure Socket.IO
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: ["http://localhost:5173"],
+        origin: ["https://vibe-bd5tqxrmv-ayushs-projects-630e27d6.vercel.app"],
         methods: ["GET", "POST"],
     },
 });
