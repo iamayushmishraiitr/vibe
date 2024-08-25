@@ -2,6 +2,8 @@ import { request } from "@/reqHandler";
 import { useState } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 const Poststats = (props: any) => {
   const data = props.info;
   const find = data.liked.find((item: any) =>  item === localStorage.getItem("userId") );
@@ -57,7 +59,7 @@ const Poststats = (props: any) => {
     <div className="flex  justify-between w-[100%] pl- pr-[1.3] mt-2">
       <div onClick={() => like()} className="flex">
         {likes ? (
-         <FavoriteIcon/>
+         <FavoriteIcon className="text-red-500"/>
         ) : (
            <FavoriteBorderIcon/>
         )}
@@ -65,9 +67,9 @@ const Poststats = (props: any) => {
       </div>
       <div onClick={savefunction} className="flex">
         {save ? (
-          <img src="../src/assets/saved.svg" />
+           <BookmarkAddedIcon/>
         ) : (
-          <img src="../src/assets/save.svg" />
+            <BookmarkAddIcon/>
         )}
 
       </div>
