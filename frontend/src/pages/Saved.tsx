@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader";
 import Postcards from "@/components/Postcards";
 import TopCreators from "@/components/TopCreators";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import { useEffect, useState } from "react";
 
 const Saved = () => {
@@ -9,8 +9,8 @@ const Saved = () => {
   const [loader, setLoader] = useState(true);
   const id = localStorage.getItem("userId");
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/saved", {
+   request
+      .get("saved", {
         params: { id: id },
       })
       .then((res) => {

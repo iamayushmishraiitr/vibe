@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -36,7 +36,7 @@ const Signin: React.FC = () => {
   const onSubmit = async (data: FormData) => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/signin", {
+      const res = await request.post("signin", {
         username: data.username,
         password: data.password,
       });

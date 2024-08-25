@@ -1,12 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Loading from "../components/Loader";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
-
+import { request } from "@/reqHandler";
 const schema = z.object({
   username: z
     .string()
@@ -37,7 +36,7 @@ const Signin: React.FC = () => {
   const onSubmit = async (data: FormData) => {
     try {
       setLoading(true);
-      await axios.post("http://localhost:3000/signup", {
+      await request.post("signup", {
         username: data.username,
         password: data.password,
           email: data.email

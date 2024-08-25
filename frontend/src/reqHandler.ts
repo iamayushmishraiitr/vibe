@@ -1,5 +1,5 @@
 import axios from "axios"
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://vibe-qm37.vercel.app";
 
 const request= axios.create({
     baseURL:baseUrl ,

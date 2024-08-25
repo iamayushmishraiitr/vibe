@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import PostUploader from "@/components/PostUploader";
 import { useState } from "react";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import Loader from "@/components/Loader";
 import { AddPhotoAlternateOutlined } from "@mui/icons-material";
 import toast from "react-hot-toast";
@@ -38,7 +38,7 @@ export default function Post() {
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     setLoader(true);
     try {
-      const res = await axios.post("http://localhost:3000/post", {
+      const res = await request.post("post", {
         imageUrl: imgUrl,
         tags: values.tags,
         location: values.location,

@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader";
 import Postcards from "@/components/Postcards";
 import TopCreators from "@/components/TopCreators";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import { useEffect, useState } from "react";
 
 type Post = {
@@ -22,8 +22,8 @@ const Home = () => {
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/post")
+    request
+      .get("post")
       .then((res) => {
         setPost(res.data);
         setLoader(false);

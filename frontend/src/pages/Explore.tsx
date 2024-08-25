@@ -1,7 +1,7 @@
 import ExploreUser from "@/components/ExploreUser";
 import Loader from "@/components/Loader";
 import TopCreators from "@/components/TopCreators";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import  { useEffect, useState } from "react";
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
@@ -11,8 +11,8 @@ const Explore = () => {
 
   useEffect(() => {
     setLoader(true);
-    axios
-      .get("http://localhost:3000/followrequest", {
+   request
+      .get("followrequest", {
         params: { id: localStorage.getItem("userId") },
       })
       .then((res) => setData(res.data))

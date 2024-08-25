@@ -1,7 +1,7 @@
 import Loader from '@/components/Loader'
 import Postcards from '@/components/Postcards'
 import TopCreators from '@/components/TopCreators'
-import axios from 'axios'
+import { request } from '@/reqHandler'
 import { useEffect, useState } from 'react'
 
 const Likes = () => {
@@ -11,7 +11,7 @@ const Likes = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/likedPost', {
+        const res = await request.get('likedPost', {
           params: { id: localStorage.getItem('userId') }
         })
         setData(res.data)

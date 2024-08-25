@@ -13,7 +13,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import PostUploader from "@/components/PostUploader";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import Loader from "@/components/Loader";
 import toast from "react-hot-toast";
 import EditIcon from '@mui/icons-material/Edit';
@@ -42,7 +42,7 @@ export default function EditProfile() {
     const fetchData = async () => {
       setLoader(true);
       try {
-        const res = await axios.get("http://localhost:3000/editprofile", {
+        const res = await request.get("editprofile", {
           params: { id: localStorage.getItem("userId") },
         });
         setData(res.data);
@@ -67,7 +67,7 @@ export default function EditProfile() {
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     try {
       setLoader(true);
-      await axios.put("http://localhost:3000/editprofile", {
+      await request.put("editprofile", {
         values,
         imgUrl,
         id: localStorage.getItem("userId"),
