@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "dev": "nodemon  src/index.ts",
+    "start": "node output/index.js" ,
+    "build" : "npx tsc -b "
   },
   "keywords": [],
   "author": "",
@@ -27,7 +29,6 @@
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
-    "@vercel/node": "^3.2.9",
     "prisma": "^5.12.1",
     "typescript": "^5.4.5"
   }
