@@ -18,7 +18,7 @@ const Saved = () => {
         setLoader(false) ;
       })
       .catch((error) => console.log(error));
-  }, [id]);
+  }, []);
   return (
     <div className="flex h-[100vh] w-[100%] text-white">
       <div className="bg-slate-800 h-[100%] w-[66%] overflow-auto hide-scrollbar">
