@@ -15,7 +15,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: ["https://vibe-dcc2-ayushs-projects-630e27d6.vercel.app"],
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST", "OPTIONS"]
+
   },
 });
 
