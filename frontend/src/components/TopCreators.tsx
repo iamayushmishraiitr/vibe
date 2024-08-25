@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { request } from "@/reqHandler";
 import UserCard from "./UserCard";
 import Loader from "./Loader";
 import { User } from "@/interface";
@@ -7,8 +7,8 @@ const TopCreators = () => {
   const [creators, setCreators] = useState<User[]>([]);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/user")
+    request
+      .get("user")
       .then((res) => setCreators(res.data))
       .catch((err) => console.log(err));
     setLoader(false);

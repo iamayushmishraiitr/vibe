@@ -1,4 +1,4 @@
-import axios from "axios";
+import { request } from "@/reqHandler";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -26,7 +26,7 @@ const Followers = ({ user }: { user: User }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/editprofile", {
+        const response = await request.get("editprofile", {
           params: { id: localStorage.getItem("userId") },
         });
         if(response)
@@ -55,7 +55,7 @@ const Followers = ({ user }: { user: User }) => {
     try {
       if (state === 1) {
         setState(2);
-        await axios.post("http://localhost:3000/followrequest", {
+        await request.post("followrequest", {
           id1: localStorage.getItem("userId"),
           id: user.id,
           username: user.username,
@@ -64,7 +64,7 @@ const Followers = ({ user }: { user: User }) => {
         toast.success("Follow request sent.");
       } else if (state === 2) {
         setState(1);
-        await axios.delete("http://localhost:3000/followrequest", {
+        await request.delete("followrequest", {
           data: {
             id1: localStorage.getItem("userId"),
             id: user.id,

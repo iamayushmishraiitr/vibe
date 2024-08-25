@@ -1,4 +1,4 @@
-import axios from "axios";
+import { request } from "@/reqHandler";
 import { useState } from "react";
 const Poststats = (props: any) => {
   const data = props.info;
@@ -18,12 +18,12 @@ const Poststats = (props: any) => {
     else setNumber(number + 1);
     try {
       if (!likes) {
-        await axios.post("http://localhost:3000/like", {
+        await request.post("like", {
           userid: localStorage.getItem("userId"),
           id: data.id,
         });
       } else {
-        await axios.delete("http://localhost:3000/like", {
+        await request.delete("like", {
           data: { userid: localStorage.getItem("userId"), id: data.id },
         });
       }
@@ -35,13 +35,13 @@ const Poststats = (props: any) => {
     setSave((prev: boolean) => !prev);
     try {
       if (!save) {
-       await axios.post("http://localhost:3000/saved", {
+       await request.post("saved", {
           userid: localStorage.getItem("userId"),
           id: data.id,
         });
          
       } else {
-      const res=  await axios.delete("http://localhost:3000/saved", {
+      const res=  await request.delete("saved", {
           data: { userid: localStorage.getItem("userId"), id: data.id },
         });
         if(res) window.location.reload() ;
