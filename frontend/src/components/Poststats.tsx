@@ -45,10 +45,10 @@ const Poststats = (props: any) => {
         });
          
       } else {
-      const res=  await request.delete("saved", {
+       await request.delete("saved", {
           data: { userid: localStorage.getItem("userId"), id: data.id },
         });
-        if(res) window.location.reload() ;
+      
       }
     } catch (error) {
       console.log(error);
