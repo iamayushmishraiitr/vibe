@@ -14,18 +14,17 @@ const server = http.createServer(app);
 // Configure Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: ["https://vibe-dcc2-ayushs-projects-630e27d6.vercel.app/"],
+    origin: ["https://vibe-dcc2-ayushs-projects-630e27d6.vercel.app"],
   },
 });
 
-// Redis configuration
+
 const redisConfig: RedisOptions = {
   port: parseInt(process.env.REDIS_PORT ?? "6379", 10),
   host: process.env.REDIS_URL ?? "localhost",
   password: process.env.REDIS_PASSWORD ?? undefined,
 };
 
-// Initialize Redis client
 const pub = new Redis(redisConfig);
 const sub = new Redis(redisConfig);
 const userData = new Redis(redisConfig);
@@ -37,12 +36,12 @@ sub.on("error", (err: Error) => {
   console.error("Redis error:", err);
 });
 
-// Interface for user mapping
+
 interface userdata {
   [key: string]: string;
 }
 
-// Handle connection
+
 io.on("connection", async (socket: Socket) => {
   const userId = socket.handshake.query.userId as string;
   console.log("The User is connected with sockert id" ,userId ,"  ",socket.id , )
