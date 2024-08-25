@@ -11,7 +11,7 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import MessageIcon from '@mui/icons-material/Message';
 import socketConnect from '@/components/socket/socketConnect';
-
+import LogoutIcon from '@mui/icons-material/Logout';
  const sidebarLinks = [
     {
       icon: <Home sx={{ color: "white", fontSize: "26px" }} />,
@@ -89,7 +89,7 @@ const isActive= pathname === link.route
         variant="ghost"
         className="shad-button_ghost mt-60 border-t-2"
         onClick={() => handleSignOut()}>
-        <img src="../src/assets/logout.svg" alt="logout" />
+        <LogoutIcon/>
         <p className="small-medium  lg:base-medium ">Logout</p>
       </Button>
     </div>
