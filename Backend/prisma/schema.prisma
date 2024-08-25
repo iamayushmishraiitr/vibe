@@ -46,8 +46,8 @@ model message {
   receiverId     Int?
   senderId       Int
   groupId        String?
-  content        String
-  type           String
+  content        String   
+  type           String      
   sender         User          @relation("sentMessages", fields: [senderId], references: [id])
   receiver       User?         @relation("receivedMessages", fields: [receiverId], references: [id])
   group          group?        @relation("groupMessage", fields: [groupId], references: [id])

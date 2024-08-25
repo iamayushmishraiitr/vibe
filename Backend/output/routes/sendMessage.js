@@ -19,6 +19,7 @@ const prisma = new client_1.PrismaClient();
 const router = express_1.default.Router();
 router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { rId, sId, content, type, } = req.body;
+    // njfnj
     try {
         const data = yield socket_1.userData.get("online");
         if (!data)
@@ -66,7 +67,7 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         yield prisma.message.create({
             data: {
                 content: content,
-                type: "text",
+                type,
                 read: false,
                 conversation: {
                     connect: { id: conversation.id },

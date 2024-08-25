@@ -64,67 +64,6 @@ io.on("connection", async (socket: Socket) => {
       });
     }
 
-  // GROUPS MESSAGES
-  // socket.on("group", async (it) => {
-  //   const groupId: string = it.group;
-  //   const senderId: string = it.senderId;
-  //   const content: string = it.val;
-  //   try {
-  //     const groupData: any = await userData.get("groups");
-  //     if (!groupData) {
-  //       const response = await prisma.group.findUnique({
-  //         where: { id: groupId },
-  //         include: {
-  //           users: {
-  //             select: {
-  //               id: true,
-  //             },
-  //           },
-  //         },
-  //       });
-  //       if (response) {
-  //         let obj2 = {
-  //           groupId: response?.users,
-  //         };
-  //         userData.set("groups", JSON.stringify(obj2));
-  //       }
-  //     }
-  //     const userIds = JSON.parse(groupData);
-  //     if (!userIds[groupId]) {
-  //       const response = await prisma.group.findUnique({
-  //         where: { id: groupId },
-  //         include: {
-  //           users: {
-  //             select: {
-  //               id: true,
-  //             },
-  //           },
-  //         },
-  //       });
-  //       const obj2 = {
-  //         groupId: response?.users,
-  //       };
-  //       userData.set("groups", JSON.stringify(obj2));
-  //     }
-
-  //     const arr = userIds[groupId];
-  //     for (let it in arr) {
-  //       pub.publish("GROUP_MESSAGE", JSON.stringify({val:content,receiverId:it}));
-  //     }
-  //   } catch (err) {
-  //     console.error("Error handling user disconnection:", err);
-  //   }
-  // });
-  // EMIT MESSAGE TO SUBSCRIBER
-  // sub.on("message", (channel, message) => {
-  //   if (channel === "PRIVATE_MESSAGE") {
-  //     const {val,receiverId}:{val:string,receiverId:string}= JSON.parse(message) ;
-  //     const socketID=obj[receiverId] ;
-  //     if(socketID)
-  //      io.to(socketID).emit("message", val);
-  //   } 
-  // });
- 
   socket.on("disconnect", async  () => {
     console.log("User disconnected:", socket.id);
       sub.unsubscribe(userId);

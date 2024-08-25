@@ -14,5 +14,4 @@ const generateToken = (username, password) => {
     }, SecretKey, { expiresIn: '3d' });
     return token;
 };
-const _default = generateToken;
-export { _default as default };
+exports.default = generateToken;
