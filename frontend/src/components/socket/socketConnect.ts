@@ -12,7 +12,7 @@ const socketConnect = () => {
    useEffect(() => {
       let socket: Socket | undefined;
       if (userId) {
-         socket = io("https://vercel.com/ayushs-projects-630e27d6/vibe", {
+         socket = io("https://vibe-azure.vercel.app", {
             query: {
                userId: userId,
             },
