@@ -14,7 +14,7 @@ const server = http.createServer(app);
 // Configure Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: ["https://vibe-bd5tqxrmv-ayushs-projects-630e27d6.vercel.app"],
+    origin: ["https://vibe-dcc2.vercel.app"],
     methods: ["GET", "POST"],
   },
 });
