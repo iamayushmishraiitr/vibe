@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { PrismaClient, Post } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -14,6 +14,7 @@ router.post("/", async (req: Request, res: Response) => {
           id: userInt
         }
       })
+      
 if(!findUser) return res.status(404)
     const response = await prisma.post.create({
       data: {
